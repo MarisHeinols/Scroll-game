@@ -7,12 +7,14 @@
 
 class Player {
 public:
-    Player(float speed);
+    Player(sf::Texture* texture, float speed, float jumpHeight);
     ~Player();
 
     void Update(float deltaTime);
 
     void Draw(sf::RenderWindow& window);
+
+    void onCollision(sf::Vector2f direction);
 
     sf::Vector2f GetPostion() { return body.getPosition(); }
     Collision GetCollision() { return Collision(body); }
@@ -20,5 +22,11 @@ public:
 private:
     sf::RectangleShape body;
     float speed;
+
+    sf::Vector2f velocity;
+    bool canJump;
+    float jumpHeight;
+    bool x_collision;
+
 
 };

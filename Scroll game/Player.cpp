@@ -1,12 +1,15 @@
 #include "Player.h"
 
-Player::Player(float speed)
+Player::Player(sf::Texture* texture, float speed, float jumpHeight)
 {
 	this->speed = speed;
-	body.setSize(sf::Vector2f(100.0f, 100.0f));
+	this->jumpHeight = jumpHeight;
+	body.setSize(sf::Vector2f(50.0f, 50.0f));
 	body.setFillColor(sf::Color::Red);
 	body.setOrigin(body.getSize() / 2.0f);
 	body.setPosition(200.0f, 200.0f);
+	body.setTexture(texture);
+	this->x_collision = false;
 }
 
 Player::~Player()
@@ -15,23 +18,38 @@ Player::~Player()
 
 void Player::Update(float deltaTime)
 {
-	sf::Vector2f movment(0.0f, 0.0f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-		movment.y -= speed * deltaTime;
+	if(x_collision == false){
+		velocity.x = 250.0f;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		movment.x += speed * deltaTime;
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && canJump) {
+		canJump = false;
+		velocity.y = -sqrtf(2.0f * 981.0f * jumpHeight);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		movment.x -= speed * deltaTime;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		movment.y += speed * deltaTime;
-	}
-	body.move(movment);
+
+	velocity.y += 981.0f * deltaTime;
+
+	body.move(velocity * deltaTime);
 }
 
 void Player::Draw(sf::RenderWindow& window)
 {
 	window.draw(body);
+}
+
+void Player::onCollision(sf::Vector2f direction)
+{
+	if (direction.x < 0.0f) {
+		velocity.x = 0.0f;
+		x_collision = true;
+		printf("You died");
+	}
+
+	if (direction.y < 0.0f) {
+		velocity.y = 0.0f;
+		canJump = true;
+	}
+	else if (direction.y > 0.0f) {
+		velocity.y = 0.0f;
+	}
 }
