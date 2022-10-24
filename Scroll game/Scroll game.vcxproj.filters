@@ -27,12 +27,12 @@
     <ClCompile Include="Platform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LevelGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Coin.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Platform.h">
@@ -41,10 +41,10 @@
     <ClInclude Include="Source.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header.h">
+    <ClInclude Include="Collision.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Collision.h">
+    <ClInclude Include="LevelGenerator.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

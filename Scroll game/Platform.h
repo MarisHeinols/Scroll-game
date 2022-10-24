@@ -9,6 +9,8 @@ public:
 
 	void Draw(sf::RenderWindow& window);
 
+	void setTexture(sf::Texture* texture);
+
 	Collision GetCollision() {
 		return Collision(body);
 	}

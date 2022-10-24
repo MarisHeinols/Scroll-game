@@ -5,7 +5,6 @@ Player::Player(sf::Texture* texture, float speed, float jumpHeight)
 	this->speed = speed;
 	this->jumpHeight = jumpHeight;
 	body.setSize(sf::Vector2f(50.0f, 50.0f));
-	body.setFillColor(sf::Color::Red);
 	body.setOrigin(body.getSize() / 2.0f);
 	body.setPosition(200.0f, 200.0f);
 	body.setTexture(texture);
@@ -19,7 +18,7 @@ Player::~Player()
 void Player::Update(float deltaTime)
 {
 	if(x_collision == false){
-		velocity.x = 250.0f;
+		velocity.x = 250.0f * speed;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && canJump) {
@@ -42,7 +41,6 @@ void Player::onCollision(sf::Vector2f direction)
 	if (direction.x < 0.0f) {
 		velocity.x = 0.0f;
 		x_collision = true;
-		printf("You died");
 	}
 
 	if (direction.y < 0.0f) {
@@ -53,3 +51,16 @@ void Player::onCollision(sf::Vector2f direction)
 		velocity.y = 0.0f;
 	}
 }
+void Player::getIfInVoid()
+{
+	if (body.getPosition().y > 500.0f) {
+		velocity.x = 0.0f;
+		x_collision = true;
+	}
+}
+bool Player::ifWon() {
+	if (body.getPosition().x > 250100.0f) {
+		return true;
+	}
+}
+
