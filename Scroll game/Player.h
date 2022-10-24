@@ -17,7 +17,7 @@ public:
 
     void getIfInVoid();
 
-    bool ifWon();
+    bool ifWon(float cordsX);
 
     sf::Vector2f GetPostion() { return body.getPosition(); }
     Collision GetCollision() { return Collision(body); }

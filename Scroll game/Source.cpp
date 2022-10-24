@@ -162,6 +162,8 @@ int main() {
 
 	//Generating level
 	platforms = gameLevel.generatePlatforms();
+	//Get finish cord
+	float endCord = platforms.back().GetPostion().x + 200.0f;
 
 	//Get highest score
 	updateHighScore();
@@ -191,7 +193,6 @@ int main() {
 		}
 		//Checking if there is collision
 		if (player.getIfCollision() && isRunning == true) {
-			printf("colision");
 			deathScreen = true;
 			isRunning = false;
 			if(scoreAdded == false){
@@ -204,7 +205,7 @@ int main() {
 
 		}
 		//Checking if player has reached the end
-		if (player.ifWon() == true) {
+		if (player.ifWon(endCord) == true) {
 			deathScreen = true;
 			isRunning = false;
 			scoreFile.open("results.txt", ifstream::app);

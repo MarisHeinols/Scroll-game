@@ -28,7 +28,6 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 		}
 		else {
 			if (caseOfObsticle == 1) {
-				printf("case 1");
 				if (cordsY < 200.0f) {
 					cordsY = 200.0f;
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
@@ -40,7 +39,6 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 				}
 			}
 			else if (caseOfObsticle == 2) {
-				printf("case 2");
 				if (cordsY > 200.0f) {
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
@@ -53,14 +51,12 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 				}
 			}
 			else if (caseOfObsticle == 3) {
-				printf("case 3");
 
 				platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 			}
 			else if (caseOfObsticle == 4) {
 
 				if (cordsY > 200.0f) {
-					printf("case 4.1");
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 500.0f, cordsY - 80.0f)));
@@ -70,7 +66,6 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 					cordsX += 1000.0f;
 				}
 				else {
-					printf("case 4.2");
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY + 40.0f)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX + 500.0f, cordsY + 0.0f)));
@@ -84,14 +79,12 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 
 			}
 			else if (caseOfObsticle == 5) {
-				printf("case 5");
 				platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 				platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 200.0f), sf::Vector2f(cordsX, cordsY - 260.0f)));
 
 
 			}
 			else if (caseOfObsticle == 6) {
-				printf("case 6");
 				if(cordsX > 2000.0f){
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
@@ -117,7 +110,6 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 			}
 			else if (caseOfObsticle == 7) {
 				if (cordsX > 2000 && cordsY < 0.0f) {
-					printf("case 7.1");
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(20.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 500.0f, cordsY - 80.0f)));
@@ -129,7 +121,6 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 					cordsY += 80.0f;
 				}
 				else {
-					printf("case 7.2");
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 500.0f, cordsY - 80.0f)));
@@ -141,9 +132,9 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 			}
 			cordsX += 250.0f;
 		}
-		//End platform
-		platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(800.0f, 100.0f), sf::Vector2f(250000.0f, cordsY)));
 	}
+	//End platform
+	platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(800.0f, 100.0f), sf::Vector2f(cordsX, cordsY)));
 
 	return platforms;
 };

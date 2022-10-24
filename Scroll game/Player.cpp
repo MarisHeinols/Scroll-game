@@ -58,8 +58,8 @@ void Player::getIfInVoid()
 		x_collision = true;
 	}
 }
-bool Player::ifWon() {
-	if (body.getPosition().x > 250100.0f) {
+bool Player::ifWon(float cordsX) {
+	if (body.getPosition().x > cordsX) {
 		return true;
 	}
 }
