@@ -21,41 +21,45 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 	for (size_t i = 0; i < 100; i++)
 	{
 		int caseOfObsticle = (1 + rand() % 7);
-
+		//Generates first platform
 		if (cordsX == 800.0f) {
 			platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 			cordsX += 250.0f;
 		}
 		else {
+			//Generates platform at the most bottom
 			if (caseOfObsticle == 1) {
 				if (cordsY < 200.0f) {
 					cordsY = 200.0f;
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 
 				}
+				//Generates platform at same hight as previous
 				else {
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 
 				}
 			}
 			else if (caseOfObsticle == 2) {
+				//Generates platform at same hight and higher
 				if (cordsY > 200.0f) {
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
 					cordsY -= 40.0f;
 					cordsX += 250.0f;
 				}
+				//Generates platform lower
 				else {
 					cordsY += 40.0f;
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 				}
 			}
 			else if (caseOfObsticle == 3) {
-
+				//Generates platform at same hight
 				platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 			}
 			else if (caseOfObsticle == 4) {
-
+				//Generates 5 platforms going up
 				if (cordsY > 200.0f) {
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
@@ -65,6 +69,7 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 					cordsY -= 140.0f;
 					cordsX += 1000.0f;
 				}
+				//Generates 1 platfrom lower, 1 platform same hight, 4 platforms going up
 				else {
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY + 40.0f)));
@@ -79,12 +84,14 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 
 			}
 			else if (caseOfObsticle == 5) {
+				//Generates a tunel based platform
 				platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 				platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 200.0f), sf::Vector2f(cordsX, cordsY - 260.0f)));
 
 
 			}
 			else if (caseOfObsticle == 6) {
+				//Generates 12 platform goint up, 2 platforms below others at the same hight as start
 				if(cordsX > 2000.0f){
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
@@ -104,11 +111,13 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 					cordsY -= 40.0f;
 					cordsX += 2250.0f;
 				}
+				//Generates platform same hight
 				else {
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 				}
 			}
 			else if (caseOfObsticle == 7) {
+				// Generates 3 small platforms going up and 3 going down
 				if (cordsX > 2000 && cordsY < 0.0f) {
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(20.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
@@ -121,6 +130,7 @@ std::vector<Platfrom> LevelGenerator::generatePlatforms() {
 					cordsY += 80.0f;
 				}
 				else {
+					// Generates 4 small platforms going up
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX, cordsY)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 250.0f, cordsY - 40.0f)));
 					platforms.push_back(Platfrom(&platformTexture, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(cordsX + 500.0f, cordsY - 80.0f)));
